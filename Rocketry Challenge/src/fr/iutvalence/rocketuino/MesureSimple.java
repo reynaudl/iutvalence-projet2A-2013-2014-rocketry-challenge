@@ -1,6 +1,6 @@
-package fr.iutvalence.rocketrychallenge;
+package fr.iutvalence.rocketuino;
 
-public class MesureLive extends Mesure
+public class MesureSimple
 {
 	private final float	accelerationX;
 	private final float	accelerationY;
@@ -8,7 +8,7 @@ public class MesureLive extends Mesure
 	private final float	pression;
 	private final long	millisecondesDepuisMesurePrecedente;
 
-	public MesureLive(float accelerationX, float accelerationY, float accelerationZ,
+	public MesureSimple(float accelerationX, float accelerationY, float accelerationZ,
 			float pression, long millisecondesDepuisMesurePrecedente)
 	{
 		this.accelerationX = accelerationX;
@@ -22,8 +22,8 @@ public class MesureLive extends Mesure
 	public String toString()
 	{
 		return "Ax " + this.accelerationX + ", Ay " + this.accelerationY + ", Az "
-				+ this.accelerationZ + ", P " + this.pression
-				+ ", T " + this.millisecondesDepuisMesurePrecedente;
+				+ this.accelerationZ + ", P " + this.pression + ", T "
+				+ this.millisecondesDepuisMesurePrecedente;
 	}
 
 	public float getAccelerationX()
