@@ -1,4 +1,4 @@
-package fr.iutvalence.rocketuino.interfaces;
+package fr.iutvalence.rocketuino;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -8,8 +8,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import fr.iutvalence.rocketuino.MesureComplete;
 import fr.iutvalence.rocketuino.exceptions.FichierImporteInvalideException;
+import fr.iutvalence.rocketuino.interfaces.ControleurPostVol;
+import fr.iutvalence.rocketuino.interfaces.VuePostVol;
 
 public class RocketruinoPostVol implements ControleurPostVol
 {

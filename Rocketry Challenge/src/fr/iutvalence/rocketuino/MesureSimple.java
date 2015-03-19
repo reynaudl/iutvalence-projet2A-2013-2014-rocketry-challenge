@@ -1,12 +1,14 @@
 package fr.iutvalence.rocketuino;
 
+import java.util.ArrayList;
+
 public class MesureSimple
 {
-	private final float	accelerationX;
-	private final float	accelerationY;
-	private final float	accelerationZ;
-	private final float	pression;
-	private final long	millisecondesDepuisMesurePrecedente;
+	private final float accelerationX;
+	private final float accelerationY;
+	private final float accelerationZ;
+	private final float pression;
+	private final long millisecondesDepuisMesurePrecedente;
 
 	public MesureSimple(float accelerationX, float accelerationY, float accelerationZ,
 			float pression, long millisecondesDepuisMesurePrecedente)
@@ -18,12 +20,21 @@ public class MesureSimple
 		this.millisecondesDepuisMesurePrecedente = millisecondesDepuisMesurePrecedente;
 	}
 
+	public MesureSimple(ArrayList tableau)
+	{
+		this.accelerationX = (float) tableau.get(0);
+		this.accelerationY = (float) tableau.get(1);
+		this.accelerationZ = (float) tableau.get(2);
+		this.pression = (float) tableau.get(3);
+		this.millisecondesDepuisMesurePrecedente = (long) tableau.get(4);
+	}
+
 	@Override
 	public String toString()
 	{
-		return "Ax " + this.accelerationX + ", Ay " + this.accelerationY + ", Az "
-				+ this.accelerationZ + ", P " + this.pression + ", T "
-				+ this.millisecondesDepuisMesurePrecedente;
+		return "\n\t(Ax " + this.accelerationX + ",\tAy " + this.accelerationY + ",\tAz "
+				+ this.accelerationZ + ",\tP " + this.pression + ",\tT "
+				+ this.millisecondesDepuisMesurePrecedente + ")";
 	}
 
 	public float getAccelerationX()

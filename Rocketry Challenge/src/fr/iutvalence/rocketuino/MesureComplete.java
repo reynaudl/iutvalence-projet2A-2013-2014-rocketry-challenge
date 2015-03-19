@@ -41,10 +41,10 @@ public class MesureComplete extends MesureSimple
 	@Override
 	public String toString()
 	{
-		return "Ax " + this.getAccelerationX() + ", Ay " + this.getAccelerationY() + ", Az "
-				+ this.getAccelerationZ() + ", Ox " + this.orientationX + ", Oy "
-				+ this.orientationY + ", Oz " + this.orientationZ + ", Mx " + this.champMagnetiqueX
-				+ ", My " + this.champMagnetiqueY + ", Mz " + this.champMagnetiqueZ + ", P "
-				+ this.getPression() + ", T " + this.getMillisecondesDepuisMesurePrecedente();
+		return "\n\t(Ax " + this.getAccelerationX() + ",\tAy " + this.getAccelerationY() + ",\tAz "
+				+ this.getAccelerationZ() + ",\tOx " + this.orientationX + ",\tOy "
+				+ this.orientationY + ",\tOz " + this.orientationZ + ",\tMx " + this.champMagnetiqueX
+				+ ",\tMy " + this.champMagnetiqueY + ",\tMz " + this.champMagnetiqueZ + ",\tP "
+				+ this.getPression() + ",\tT " + this.getMillisecondesDepuisMesurePrecedente() + ")";
 	}
 }
