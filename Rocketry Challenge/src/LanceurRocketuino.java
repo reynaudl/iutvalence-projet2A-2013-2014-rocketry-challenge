@@ -1,5 +1,6 @@
 import fr.iutvalence.rocketuino.MesureSimple;
 import fr.iutvalence.rocketuino.RocketruinoEnVol;
+import fr.iutvalence.rocketuino.ihm.InterfaceConsoleEnVol;
 
 public class LanceurRocketuino
 {
@@ -21,6 +22,8 @@ public class LanceurRocketuino
 	
 	private static void testRocketruinoEnVol()
 	{
-		RocketruinoEnVol rocketruinoeEnVol = new RocketruinoEnVol(null);
+		RocketruinoEnVol rocketruinoEnVol = new RocketruinoEnVol();
+		InterfaceConsoleEnVol interfaceConsoleEnVol = new InterfaceConsoleEnVol(rocketruinoEnVol);
+		rocketruinoEnVol.setVue(interfaceConsoleEnVol);
 	}
 }

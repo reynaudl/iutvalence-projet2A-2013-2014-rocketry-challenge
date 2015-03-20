@@ -39,9 +39,10 @@ public class LecteurPortSerie implements SerialPortEventListener
 		{
 			this.initialize();
 		}
-		catch (PortCOMIntrouvable e)
+		catch (Exception e)
 		{
 			e.printStackTrace();
+			this.controleur.erreurConnexionAvecRecepteur();
 		}
 	}
 
@@ -62,7 +63,9 @@ public class LecteurPortSerie implements SerialPortEventListener
 				}
 		}
 		if (portId == null)
+		{
 			throw new PortCOMIntrouvable();
+		}
 
 		try
 		{

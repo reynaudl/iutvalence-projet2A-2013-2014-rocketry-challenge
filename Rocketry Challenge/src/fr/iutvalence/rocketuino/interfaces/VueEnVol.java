@@ -7,8 +7,10 @@ public interface VueEnVol
 	public void initialiserGraphiques();
 	public void initialiserTableaux();
 	
-	public void ajouterMesure(MesureSimple m);
-	public void actualiserTableauExtremums(int[] extremumsVolEnCours);
+	public void actualiserMesures();
+	public void actualiserTableauExtremums();
 	
 	public void signalerFinCapture();
+	
+	public void afficherErreurConnexionAvecRecepteur();
 }
