@@ -3,5 +3,22 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="lib" path="lib/RXTXcomm.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sebastien/Desktop/Projet S3/Workspace/iutvalence-projet2A-2013-2014-rocketry-challenge/Rocketry Challenge/lib/worldwind-2.0.0/gdal.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sebastien/Desktop/Projet S3/Workspace/iutvalence-projet2A-2013-2014-rocketry-challenge/Rocketry Challenge/lib/worldwind-2.0.0/gluegen-rt.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sebastien/Desktop/Projet S3/Workspace/iutvalence-projet2A-2013-2014-rocketry-challenge/Rocketry Challenge/lib/worldwind-2.0.0/gluegen-rt-natives-linux-amd64.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sebastien/Desktop/Projet S3/Workspace/iutvalence-projet2A-2013-2014-rocketry-challenge/Rocketry Challenge/lib/worldwind-2.0.0/gluegen-rt-natives-linux-i586.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sebastien/Desktop/Projet S3/Workspace/iutvalence-projet2A-2013-2014-rocketry-challenge/Rocketry Challenge/lib/worldwind-2.0.0/gluegen-rt-natives-macosx-universal.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sebastien/Desktop/Projet S3/Workspace/iutvalence-projet2A-2013-2014-rocketry-challenge/Rocketry Challenge/lib/worldwind-2.0.0/gluegen-rt-natives-windows-amd64.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sebastien/Desktop/Projet S3/Workspace/iutvalence-projet2A-2013-2014-rocketry-challenge/Rocketry Challenge/lib/worldwind-2.0.0/gluegen-rt-natives-windows-i586.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sebastien/Desktop/Projet S3/Workspace/iutvalence-projet2A-2013-2014-rocketry-challenge/Rocketry Challenge/lib/worldwind-2.0.0/jogl-all.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sebastien/Desktop/Projet S3/Workspace/iutvalence-projet2A-2013-2014-rocketry-challenge/Rocketry Challenge/lib/worldwind-2.0.0/jogl-all-natives-linux-amd64.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sebastien/Desktop/Projet S3/Workspace/iutvalence-projet2A-2013-2014-rocketry-challenge/Rocketry Challenge/lib/worldwind-2.0.0/jogl-all-natives-linux-i586.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sebastien/Desktop/Projet S3/Workspace/iutvalence-projet2A-2013-2014-rocketry-challenge/Rocketry Challenge/lib/worldwind-2.0.0/jogl-all-natives-macosx-universal.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sebastien/Desktop/Projet S3/Workspace/iutvalence-projet2A-2013-2014-rocketry-challenge/Rocketry Challenge/lib/worldwind-2.0.0/jogl-all-natives-windows-amd64.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sebastien/Desktop/Projet S3/Workspace/iutvalence-projet2A-2013-2014-rocketry-challenge/Rocketry Challenge/lib/worldwind-2.0.0/jogl-all-natives-windows-i586.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sebastien/Desktop/Projet S3/Workspace/iutvalence-projet2A-2013-2014-rocketry-challenge/Rocketry Challenge/lib/worldwind-2.0.0/plugin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sebastien/Desktop/Projet S3/Workspace/iutvalence-projet2A-2013-2014-rocketry-challenge/Rocketry Challenge/lib/worldwind-2.0.0/vpf-symbols.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sebastien/Desktop/Projet S3/Workspace/iutvalence-projet2A-2013-2014-rocketry-challenge/Rocketry Challenge/lib/worldwind-2.0.0/worldwind.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sebastien/Desktop/Projet S3/Workspace/iutvalence-projet2A-2013-2014-rocketry-challenge/Rocketry Challenge/lib/worldwind-2.0.0/worldwindx.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

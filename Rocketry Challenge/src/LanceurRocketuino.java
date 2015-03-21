@@ -1,12 +1,26 @@
+import javax.swing.JFrame;
+
 import fr.iutvalence.rocketuino.MesureSimple;
 import fr.iutvalence.rocketuino.RocketruinoEnVol;
-import fr.iutvalence.rocketuino.ihm.InterfaceConsoleEnVol;
+import fr.iutvalence.rocketuino.ihm.AffichagePostVol;
+import fr.iutvalence.rocketuino.ihm.AffichageConsoleEnVol;
 
 public class LanceurRocketuino
 {
 
 	public static void main(String[] args)
 	{
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
+                JFrame frame = new AffichagePostVol();
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+		
 		LanceurRocketuino.testRocketruinoEnVol();
 	}
 	
@@ -23,7 +37,7 @@ public class LanceurRocketuino
 	private static void testRocketruinoEnVol()
 	{
 		RocketruinoEnVol rocketruinoEnVol = new RocketruinoEnVol();
-		InterfaceConsoleEnVol interfaceConsoleEnVol = new InterfaceConsoleEnVol(rocketruinoEnVol);
+		AffichageConsoleEnVol interfaceConsoleEnVol = new AffichageConsoleEnVol(rocketruinoEnVol);
 		rocketruinoEnVol.setVue(interfaceConsoleEnVol);
 	}
 }
