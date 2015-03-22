@@ -1,29 +1,21 @@
-import javax.swing.JFrame;
+package fr.iutvalence.rocketuino;
+import javax.swing.SwingUtilities;
 
-import fr.iutvalence.rocketuino.MesureSimple;
-import fr.iutvalence.rocketuino.RocketruinoEnVol;
-import fr.iutvalence.rocketuino.ihm.AffichagePostVol;
 import fr.iutvalence.rocketuino.ihm.AffichageConsoleEnVol;
+import fr.iutvalence.rocketuino.ihm.TacheAffichageMenuPrincipal;
 
-public class LanceurRocketuino
+public class ApplicationRocketruino
 {
+	public static final String NOM_APPLICATION = "Rocketruino 1.0";
+	public static final int LARGEUR_FENETRE = 1000;
+	public static final int HAUTEUR_FENETRE = 600;
 
 	public static void main(String[] args)
 	{
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
-            public void run()
-            {
-                JFrame frame = new AffichagePostVol();
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.pack();
-                frame.setVisible(true);
-            }
-        });
-		
-		LanceurRocketuino.testRocketruinoEnVol();
+		SwingUtilities.invokeLater(new TacheAffichageMenuPrincipal(
+				ApplicationRocketruino.LARGEUR_FENETRE, ApplicationRocketruino.HAUTEUR_FENETRE));
 	}
-	
+
 	private static void testMesureSimple()
 	{
 		MesureSimple m1 = new MesureSimple(0.654f, 2.142f, 1.546f, 5.546f, 500);
@@ -33,7 +25,7 @@ public class LanceurRocketuino
 		System.out.println("Mesure Simple m1 :");
 		System.out.println(m1);
 	}
-	
+
 	private static void testRocketruinoEnVol()
 	{
 		RocketruinoEnVol rocketruinoEnVol = new RocketruinoEnVol();
