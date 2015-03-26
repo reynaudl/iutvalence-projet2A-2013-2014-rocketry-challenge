@@ -14,9 +14,9 @@ import fr.iutvalence.rocketuino.interfaces.VuePostVol;
 
 public class RocketruinoPostVol implements ControleurPostVol
 {
-	private static final int			NB_DONNEES_PAR_LIGNE	= 11;
-	private final VuePostVol			vue;
-	private ArrayList<MesureComplete>	mesures;
+	private static final int NB_DONNEES_PAR_LIGNE = 11;
+	private final VuePostVol vue;
+	private ArrayList<MesureComplete> mesures;
 
 	public RocketruinoPostVol(VuePostVol vue)
 	{
@@ -55,8 +55,7 @@ public class RocketruinoPostVol implements ControleurPostVol
 		}
 	}
 
-	private MesureComplete ligneTexteVersMesures(String ligneCourante)
-			throws FichierImporteInvalideException
+	private MesureComplete ligneTexteVersMesures(String ligneCourante) throws FichierImporteInvalideException
 	{
 		String[] valeursLigneCourante = ligneCourante.split(",");
 

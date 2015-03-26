@@ -13,4 +13,7 @@ public interface VueEnVol
 	public void signalerFinCapture();
 	
 	public void afficherErreurConnexionAvecRecepteur();
+	
+	public void setReady();
+	public boolean isReady();
 }

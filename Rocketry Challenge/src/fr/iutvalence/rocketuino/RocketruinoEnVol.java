@@ -2,6 +2,8 @@ package fr.iutvalence.rocketuino;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import fr.iutvalence.rocketuino.interfaces.ControleurEnVol;
 import fr.iutvalence.rocketuino.interfaces.VueEnVol;
 
@@ -11,11 +13,6 @@ public class RocketruinoEnVol implements ControleurEnVol
 	private ArrayList<MesureSimple> mesures;
 	private LecteurPortSerie lecteurPortSerie;
 	private MesureSimple mesureExtremums;
-	
-	public RocketruinoEnVol()
-	{
-		// TODO Créé lors de l'appel à setVue()
-	}
 
 	public void setVue(VueEnVol vue)
 	{
@@ -23,8 +20,6 @@ public class RocketruinoEnVol implements ControleurEnVol
 		this.mesures = new ArrayList<MesureSimple>();
 		this.mesureExtremums = new MesureSimple(0, 0, 0, 0, 0);
 		this.lecteurPortSerie = new LecteurPortSerie(this);
-		
-		while(true); // TODO
 	}
 
 	@Override
@@ -44,12 +39,6 @@ public class RocketruinoEnVol implements ControleurEnVol
 	}
 
 	@Override
-	public void erreurConnexionAvecRecepteur()
-	{
-		this.vue.afficherErreurConnexionAvecRecepteur();
-	}
-
-	@Override
 	public ArrayList<MesureSimple> getMesures()
 	{
 		return mesures;
@@ -59,6 +48,12 @@ public class RocketruinoEnVol implements ControleurEnVol
 	public MesureSimple getMesureExtremums()
 	{
 		return mesureExtremums;
+	}
+
+	@Override
+	public void erreurConnexionAvecRecepteur()
+	{
+		this.vue.afficherErreurConnexionAvecRecepteur();
 	}
 
 	private void actualiserTableauExtremums(MesureSimple mesure)
@@ -104,5 +99,11 @@ public class RocketruinoEnVol implements ControleurEnVol
 	{
 		this.mesureExtremums = new MesureSimple(0, 0, 0, 0, 0);
 		this.vue.actualiserTableauExtremums();
+	}
+
+	@Override
+	public void setReady()
+	{
+		this.vue.setReady();
 	}
 }

@@ -16,7 +16,7 @@ import java.util.Enumeration;
 
 public class LecteurPortSerie implements SerialPortEventListener
 {
-	SerialPort serialPort;
+	SerialPort portSerie;
 	
 	private final ControleurEnVol controleur;
 
@@ -35,9 +35,11 @@ public class LecteurPortSerie implements SerialPortEventListener
 	public LecteurPortSerie(ControleurEnVol controleur)
 	{
 		this.controleur = controleur;
+		
 		try
 		{
-			this.initialize();
+			this.ouvrirPortCOM();
+			this.controleur.setReady();
 		}
 		catch (Exception e)
 		{
@@ -46,7 +48,7 @@ public class LecteurPortSerie implements SerialPortEventListener
 		}
 	}
 
-	private void initialize() throws PortCOMIntrouvable
+	private void ouvrirPortCOM() throws PortCOMIntrouvable
 	{
 		CommPortIdentifier portId = null;
 		Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();
@@ -70,18 +72,16 @@ public class LecteurPortSerie implements SerialPortEventListener
 		try
 		{
 			// open serial port, and use class name for the appName.
-			serialPort = (SerialPort) portId.open(this.getClass().getName(), DELAI_MAX);
+			portSerie = (SerialPort) portId.open(this.getClass().getName(), DELAI_MAX);
 
 			// Paramétrage du port
-			serialPort.setSerialPortParams(DEBIT, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
+			portSerie.setSerialPortParams(DEBIT, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
 					SerialPort.PARITY_NONE);
 
-			// open the streams
-			entree = new BufferedReader(new InputStreamReader(serialPort.getInputStream()));
+			entree = new BufferedReader(new InputStreamReader(portSerie.getInputStream()));
 
-			// add event listeners
-			serialPort.addEventListener(this);
-			serialPort.notifyOnDataAvailable(true);
+			portSerie.addEventListener(this);
+			portSerie.notifyOnDataAvailable(true);
 		}
 		catch (Exception e)
 		{
@@ -95,10 +95,10 @@ public class LecteurPortSerie implements SerialPortEventListener
 	 */
 	public synchronized void close()
 	{
-		if (serialPort != null)
+		if (portSerie != null)
 		{
-			serialPort.removeEventListener();
-			serialPort.close();
+			portSerie.removeEventListener();
+			portSerie.close();
 		}
 	}
 
@@ -114,6 +114,7 @@ public class LecteurPortSerie implements SerialPortEventListener
 			{
 				String ligneRecue = entree.readLine();
 				this.stringVersMesure(ligneRecue);
+				// TODO : Si la ligne signale la fin de la capture, stopper et signaler
 			}
 			catch (Exception e)
 			{

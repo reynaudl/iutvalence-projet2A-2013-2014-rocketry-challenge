@@ -12,4 +12,6 @@ public interface ControleurEnVol
 	
 	public ArrayList<MesureSimple> getMesures();
 	public MesureSimple getMesureExtremums();
+	
+	public void setReady();
 }
