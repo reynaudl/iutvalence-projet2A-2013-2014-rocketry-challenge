@@ -13,11 +13,11 @@ public class MesureComplete extends MesureSimple
 
 	public MesureComplete(float accelerationX, float accelerationY, float accelerationZ,
 			float orientationX, float orientationY, float orientationZ, float champMagnetiqueX,
-			float champMagnetiqueY, float champMagnetiqueZ, float pression,
-			long millisecondesDepuisMesurePrecedente)
+			float champMagnetiqueY, float champMagnetiqueZ, float altitude,
+			long millisecondes)
 	{
-		super(accelerationX, accelerationY, accelerationZ, pression,
-				millisecondesDepuisMesurePrecedente);
+		super(accelerationX, accelerationY, accelerationZ, altitude,
+				millisecondes);
 		this.orientationX = orientationX;
 		this.orientationY = orientationY;
 		this.orientationZ = orientationZ;
@@ -45,6 +45,6 @@ public class MesureComplete extends MesureSimple
 				+ this.getAccelerationZ() + ",\tOx " + this.orientationX + ",\tOy "
 				+ this.orientationY + ",\tOz " + this.orientationZ + ",\tMx " + this.champMagnetiqueX
 				+ ",\tMy " + this.champMagnetiqueY + ",\tMz " + this.champMagnetiqueZ + ",\tP "
-				+ this.getPression() + ",\tT " + this.getMillisecondesDepuisMesurePrecedente() + ")";
+				+ this.getAltitude() + ",\tT " + this.getMillisecondes() + ")";
 	}
 }

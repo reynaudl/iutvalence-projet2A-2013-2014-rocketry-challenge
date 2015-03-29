@@ -4,11 +4,10 @@ import fr.iutvalence.rocketuino.MesureSimple;
 
 public interface VueEnVol
 {
-	public void initialiserGraphiques();
-	public void initialiserTableaux();
+	public void viderGraphiques();
 	
-	public void actualiserMesures();
-	public void actualiserTableauExtremums();
+	public void ajouterMesure(MesureSimple mesure);
+	public void actualiserTableauExtremums(MesureSimple mesureExtremums);
 	
 	public void signalerFinCapture();
 	

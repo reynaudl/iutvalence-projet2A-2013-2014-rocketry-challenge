@@ -7,17 +7,17 @@ public class MesureSimple
 	private final float accelerationX;
 	private final float accelerationY;
 	private final float accelerationZ;
-	private final float pression;
-	private final long millisecondesDepuisMesurePrecedente;
+	private final float altitude;
+	private final long millisecondes;
 
 	public MesureSimple(float accelerationX, float accelerationY, float accelerationZ,
-			float pression, long millisecondesDepuisMesurePrecedente)
+			float altitude, long millisecondes)
 	{
 		this.accelerationX = accelerationX;
 		this.accelerationY = accelerationY;
 		this.accelerationZ = accelerationZ;
-		this.pression = pression;
-		this.millisecondesDepuisMesurePrecedente = millisecondesDepuisMesurePrecedente;
+		this.altitude = altitude;
+		this.millisecondes = millisecondes;
 	}
 
 	public MesureSimple(ArrayList tableau)
@@ -25,16 +25,16 @@ public class MesureSimple
 		this.accelerationX = (float) tableau.get(0);
 		this.accelerationY = (float) tableau.get(1);
 		this.accelerationZ = (float) tableau.get(2);
-		this.pression = (float) tableau.get(3);
-		this.millisecondesDepuisMesurePrecedente = (long) tableau.get(4);
+		this.altitude = (float) tableau.get(3);
+		this.millisecondes = (long) tableau.get(4);
 	}
 
 	@Override
 	public String toString()
 	{
 		return "\n\t(Ax " + this.accelerationX + ",\tAy " + this.accelerationY + ",\tAz "
-				+ this.accelerationZ + ",\tP " + this.pression + ",\tT "
-				+ this.millisecondesDepuisMesurePrecedente + ")";
+				+ this.accelerationZ + ",\tP " + this.altitude + ",\tT "
+				+ this.millisecondes + ")";
 	}
 
 	public float getAccelerationX()
@@ -52,13 +52,13 @@ public class MesureSimple
 		return this.accelerationZ;
 	}
 
-	public float getPression()
+	public float getAltitude()
 	{
-		return this.pression;
+		return this.altitude;
 	}
 
-	public float getMillisecondesDepuisMesurePrecedente()
+	public float getMillisecondes()
 	{
-		return millisecondesDepuisMesurePrecedente;
+		return millisecondes;
 	}
 }

@@ -34,6 +34,7 @@ public class TacheAffichage implements Runnable
 	public void lancerAffichagePostVol()
 	{
 		this.changerContenuFenetre(new AffichagePostVol(this.largeurFenetre, this.hauteurFenetre));
+		// TODO
 	}
 	
 	public void lancerAffichageEnVol()

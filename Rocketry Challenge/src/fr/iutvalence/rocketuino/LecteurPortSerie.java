@@ -134,7 +134,7 @@ public class LecteurPortSerie implements SerialPortEventListener
 			tableauValeursMesure.add(Float.parseFloat(valeurs[0])); // Accélération X
 			tableauValeursMesure.add(Float.parseFloat(valeurs[1])); // Accélération Y
 			tableauValeursMesure.add(Float.parseFloat(valeurs[2])); // Accélération Z
-			tableauValeursMesure.add(Float.parseFloat(valeurs[3])); // Pression
+			tableauValeursMesure.add(Float.parseFloat(valeurs[3])); // Altitude
 			tableauValeursMesure.add(Long.parseLong(valeurs[4])); // Temps
 			
 			this.controleur.ajouterMesure(new MesureSimple(tableauValeursMesure));

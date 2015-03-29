@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/RXTXcomm.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Sebastien/Desktop/Projet S3/Workspace/iutvalence-projet2A-2013-2014-rocketry-challenge/Rocketry Challenge/lib/worldwind-2.0.0/gdal.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Sebastien/Desktop/Projet S3/Workspace/iutvalence-projet2A-2013-2014-rocketry-challenge/Rocketry Challenge/lib/worldwind-2.0.0/gluegen-rt.jar"/>

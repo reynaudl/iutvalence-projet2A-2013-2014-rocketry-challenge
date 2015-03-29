@@ -27,14 +27,14 @@ public class RocketruinoEnVol implements ControleurEnVol
 	{
 		this.mesures.clear();
 		this.viderTableauExtremums();
-		this.vue.actualiserMesures();
+		this.vue.viderGraphiques();
 	}
 
 	@Override
 	public void ajouterMesure(MesureSimple mesure)
 	{
 		this.mesures.add(mesure);
-		this.vue.actualiserMesures();
+		this.vue.ajouterMesure(mesure);
 		this.actualiserTableauExtremums(mesure);
 	}
 
@@ -63,7 +63,7 @@ public class RocketruinoEnVol implements ControleurEnVol
 		float accelerationX = this.mesureExtremums.getAccelerationX();
 		float accelerationY = this.mesureExtremums.getAccelerationY();
 		float accelerationZ = this.mesureExtremums.getAccelerationZ();
-		float pression = this.mesureExtremums.getPression();
+		float pression = this.mesureExtremums.getAltitude();
 
 		if (mesure.getAccelerationX() > this.mesureExtremums.getAccelerationX())
 		{
@@ -83,22 +83,22 @@ public class RocketruinoEnVol implements ControleurEnVol
 			valeursExtremumsModifiees = true;
 		}
 
-		if (mesure.getPression() > this.mesureExtremums.getPression())
+		if (mesure.getAltitude() > this.mesureExtremums.getAltitude())
 		{
-			pression = mesure.getPression();
+			pression = mesure.getAltitude();
 			valeursExtremumsModifiees = true;
 		}
 		
 		this.mesureExtremums = new MesureSimple(accelerationX, accelerationY, accelerationZ, pression, 0);
 		
 		if (valeursExtremumsModifiees)
-			this.vue.actualiserTableauExtremums();
+			this.vue.actualiserTableauExtremums(this.mesureExtremums);
 	}
 
 	private void viderTableauExtremums()
 	{
 		this.mesureExtremums = new MesureSimple(0, 0, 0, 0, 0);
-		this.vue.actualiserTableauExtremums();
+		this.vue.actualiserTableauExtremums(this.mesureExtremums);
 	}
 
 	@Override
