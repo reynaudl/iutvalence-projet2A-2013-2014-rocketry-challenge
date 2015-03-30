@@ -12,13 +12,15 @@ public class RocketruinoEnVol implements ControleurEnVol
 	private VueEnVol vue;
 	private ArrayList<MesureSimple> mesures;
 	private LecteurPortSerie lecteurPortSerie;
-	private MesureSimple mesureExtremums;
+	private MesureSimple maximums;
+	private MesureSimple minimums;
 
 	public void setVue(VueEnVol vue)
 	{
 		this.vue = vue;
 		this.mesures = new ArrayList<MesureSimple>();
-		this.mesureExtremums = new MesureSimple(0, 0, 0, 0, 0);
+		this.maximums = new MesureSimple(0, 0, 0, 0, 0);
+		this.minimums = new MesureSimple(0, 0, 0, 0, 0);
 		this.lecteurPortSerie = new LecteurPortSerie(this);
 	}
 
@@ -35,19 +37,25 @@ public class RocketruinoEnVol implements ControleurEnVol
 	{
 		this.mesures.add(mesure);
 		this.vue.ajouterMesure(mesure);
-		this.actualiserTableauExtremums(mesure);
+		this.actualiserExtremums(mesure);
 	}
 
 	@Override
 	public ArrayList<MesureSimple> getMesures()
 	{
-		return mesures;
+		return this.mesures;
 	}
 
 	@Override
-	public MesureSimple getMesureExtremums()
+	public MesureSimple getMaximums()
 	{
-		return mesureExtremums;
+		return this.maximums;
+	}
+
+	@Override
+	public MesureSimple getMinimums()
+	{
+		return this.minimums;
 	}
 
 	@Override
@@ -56,49 +64,83 @@ public class RocketruinoEnVol implements ControleurEnVol
 		this.vue.afficherErreurConnexionAvecRecepteur();
 	}
 
-	private void actualiserTableauExtremums(MesureSimple mesure)
+	private void actualiserExtremums(MesureSimple mesure)
 	{
-		boolean valeursExtremumsModifiees = false;
+		boolean valeursMaximumModifiees = false;
+		boolean valeursMinimumModifiees = false;
 		
-		float accelerationX = this.mesureExtremums.getAccelerationX();
-		float accelerationY = this.mesureExtremums.getAccelerationY();
-		float accelerationZ = this.mesureExtremums.getAccelerationZ();
-		float pression = this.mesureExtremums.getAltitude();
+		float accelXMax = this.maximums.getAccelerationX();
+		float accelYMax = this.maximums.getAccelerationY();
+		float accelZMax = this.maximums.getAccelerationZ();
+		float pressionMax = this.maximums.getAltitude();
+		
+		float accelXMin = this.minimums.getAccelerationX();
+		float accelYMin = this.minimums.getAccelerationY();
+		float accelZMin = this.minimums.getAccelerationZ();
+		float pressionMin = this.minimums.getAltitude();
 
-		if (mesure.getAccelerationX() > this.mesureExtremums.getAccelerationX())
+		// Màj valeurs max
+		if (mesure.getAccelerationX() > this.maximums.getAccelerationX())
 		{
-			accelerationX = mesure.getAccelerationX();
-			valeursExtremumsModifiees = true;
+			accelXMax = mesure.getAccelerationX();
+			valeursMaximumModifiees = true;
 		}
 		
-		if (mesure.getAccelerationY() > this.mesureExtremums.getAccelerationY())
+		if (mesure.getAccelerationY() > this.maximums.getAccelerationY())
 		{
-			accelerationY = mesure.getAccelerationY();
-			valeursExtremumsModifiees = true;
+			accelYMax = mesure.getAccelerationY();
+			valeursMaximumModifiees = true;
 		}
 
-		if (mesure.getAccelerationZ() > this.mesureExtremums.getAccelerationZ())
+		if (mesure.getAccelerationZ() > this.maximums.getAccelerationZ())
 		{
-			accelerationZ = mesure.getAccelerationZ();
-			valeursExtremumsModifiees = true;
+			accelZMax = mesure.getAccelerationZ();
+			valeursMaximumModifiees = true;
 		}
 
-		if (mesure.getAltitude() > this.mesureExtremums.getAltitude())
+		if (mesure.getAltitude() > this.maximums.getAltitude())
 		{
-			pression = mesure.getAltitude();
-			valeursExtremumsModifiees = true;
+			pressionMax = mesure.getAltitude();
+			valeursMaximumModifiees = true;
+		}
+
+		// Màj valeurs min
+		if (mesure.getAccelerationX() < this.minimums.getAccelerationX())
+		{
+			accelXMin = mesure.getAccelerationX();
+			valeursMinimumModifiees = true;
 		}
 		
-		this.mesureExtremums = new MesureSimple(accelerationX, accelerationY, accelerationZ, pression, 0);
+		if (mesure.getAccelerationY() < this.minimums.getAccelerationY())
+		{
+			accelYMin = mesure.getAccelerationY();
+			valeursMinimumModifiees = true;
+		}
+
+		if (mesure.getAccelerationZ() < this.minimums.getAccelerationZ())
+		{
+			accelZMin = mesure.getAccelerationZ();
+			valeursMinimumModifiees = true;
+		}
+
+		if (mesure.getAltitude() < this.minimums.getAltitude())
+		{
+			pressionMin = mesure.getAltitude();
+			valeursMinimumModifiees = true;
+		}
+
+		this.maximums = new MesureSimple(accelXMax, accelYMax, accelZMax, pressionMax, 0);
+		this.minimums = new MesureSimple(accelXMin, accelYMin, accelZMin, pressionMin, 0);
 		
-		if (valeursExtremumsModifiees)
-			this.vue.actualiserTableauExtremums(this.mesureExtremums);
+		if (valeursMaximumModifiees || valeursMinimumModifiees)
+			this.vue.actualiserTableauxExtremums();
 	}
 
 	private void viderTableauExtremums()
 	{
-		this.mesureExtremums = new MesureSimple(0, 0, 0, 0, 0);
-		this.vue.actualiserTableauExtremums(this.mesureExtremums);
+		this.maximums = new MesureSimple(0, 0, 0, 0, 0);
+		this.minimums = new MesureSimple(0, 0, 0, 0, 0);
+		this.vue.actualiserTableauxExtremums();
 	}
 
 	@Override

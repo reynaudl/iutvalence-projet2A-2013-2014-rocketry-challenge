@@ -7,7 +7,7 @@ public interface VueEnVol
 	public void viderGraphiques();
 	
 	public void ajouterMesure(MesureSimple mesure);
-	public void actualiserTableauExtremums(MesureSimple mesureExtremums);
+	public void actualiserTableauxExtremums();
 	
 	public void signalerFinCapture();
 	

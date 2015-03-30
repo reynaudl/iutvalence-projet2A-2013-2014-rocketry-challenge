@@ -11,7 +11,8 @@ public interface ControleurEnVol
 	public void erreurConnexionAvecRecepteur();
 	
 	public ArrayList<MesureSimple> getMesures();
-	public MesureSimple getMesureExtremums();
+	public MesureSimple getMaximums();
+	public MesureSimple getMinimums();
 	
 	public void setReady();
 }

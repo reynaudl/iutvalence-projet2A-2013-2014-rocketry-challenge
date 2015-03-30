@@ -10,16 +10,16 @@ import javax.swing.table.DefaultTableModel;
 
 import fr.iutvalence.rocketuino.MesureSimple;
 
-public class PanneauTableauExtremums extends JTable
+public class PanneauTableauMesure extends JTable
 {
 	private DefaultTableModel tableModel;
 	private static final String LIGNES[] = { "Accélération X :", "Accélération Y :", "Accélération Z :",
 			"Altitude :" };
 
-	public PanneauTableauExtremums()
+	public PanneauTableauMesure()
 	{
 		super();
-
+		
 		this.tableModel = new DefaultTableModel();
 		this.setModel(this.tableModel);
 
@@ -51,7 +51,7 @@ public class PanneauTableauExtremums extends JTable
 		this.getColumnModel().getColumn(1).setWidth(50);
 	}
 
-	public void actualiserExtremums(MesureSimple mesure)
+	public void actualiserMesure(MesureSimple mesure)
 	{
 		this.tableModel.setValueAt(mesure.getAccelerationX(), 0, 1);
 		this.tableModel.setValueAt(mesure.getAccelerationY(), 1, 1);

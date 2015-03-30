@@ -26,14 +26,16 @@ public class AffichageEnVol extends JPanel implements VueEnVol, ActionListener
 	private boolean isReady = false;
 
 	private PanneauGraphiquesLive panneauGraphiques;
-	private PanneauTableauExtremums panneauTableauExtremums;
+	private PanneauTableauMesure panneauTableauMinimums;
+	private PanneauTableauMesure panneauTableauMaximums;
 
 	public AffichageEnVol(ControleurEnVol controleur, TacheAffichage tacheAffichage)
 	{
 		this.controleur = controleur;
 		this.tacheAffichage = tacheAffichage;
 		this.panneauGraphiques = new PanneauGraphiquesLive(this.tacheAffichage);
-		this.panneauTableauExtremums = new PanneauTableauExtremums();
+		this.panneauTableauMinimums = new PanneauTableauMesure();
+		this.panneauTableauMaximums = new PanneauTableauMesure();
 		this.initialiserAffichage();
 	}
 
@@ -42,14 +44,20 @@ public class AffichageEnVol extends JPanel implements VueEnVol, ActionListener
 		this.setLayout(new BorderLayout());
 		this.add(this.panneauGraphiques, BorderLayout.CENTER);
 
-		JLabel valeursMax = new JLabel("Valeurs maximales          ");
+		JLabel valeursMin = new JLabel("          Valeurs minimales          ");
+		valeursMin.setFont(new Font("Arial", Font.BOLD, 13));
+		valeursMin.setForeground(Color.DARK_GRAY);
+
+		JLabel valeursMax = new JLabel("          Valeurs maximales          ");
 		valeursMax.setFont(new Font("Arial", Font.BOLD, 13));
 		valeursMax.setForeground(Color.DARK_GRAY);
 
 		JPanel panneauBas = new JPanel();
 		panneauBas.setBackground(Color.WHITE);
+		panneauBas.add(valeursMin);
+		panneauBas.add(this.panneauTableauMinimums);
 		panneauBas.add(valeursMax);
-		panneauBas.add(this.panneauTableauExtremums);
+		panneauBas.add(this.panneauTableauMaximums);
 
 		this.add(panneauBas, BorderLayout.PAGE_END);
 
@@ -84,7 +92,8 @@ public class AffichageEnVol extends JPanel implements VueEnVol, ActionListener
 			public void run()
 			{
 				panneauGraphiques.viderGraphiques();
-				panneauTableauExtremums.viderTableau();
+				panneauTableauMinimums.viderTableau();
+				panneauTableauMaximums.viderTableau();
 			}
 		});
 	}
@@ -103,14 +112,15 @@ public class AffichageEnVol extends JPanel implements VueEnVol, ActionListener
 	}
 
 	@Override
-	public void actualiserTableauExtremums(MesureSimple mesureExtremums)
+	public void actualiserTableauxExtremums()
 	{
 		Platform.runLater(new Runnable()
 		{
 			@Override
 			public void run()
 			{
-				panneauTableauExtremums.actualiserExtremums(mesureExtremums);
+				panneauTableauMinimums.actualiserMesure(controleur.getMinimums());
+				panneauTableauMaximums.actualiserMesure(controleur.getMaximums());
 			}
 		});
 	}
