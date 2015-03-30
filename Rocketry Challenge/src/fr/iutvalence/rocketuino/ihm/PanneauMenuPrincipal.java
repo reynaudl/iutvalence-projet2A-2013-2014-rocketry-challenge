@@ -117,7 +117,7 @@ public class PanneauMenuPrincipal extends JPanel implements ActionListener
 			this.tacheAffichage.lancerAffichagePostVol();
 		
 		if (source == this.boutonQuitter)
-			if (JOptionPane.showConfirmDialog(this.tacheAffichage.getFenetre(), "Etes-vous sûr de vouloir quitter l'application ?", "Quitter - confirmation", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.OK_OPTION)
-				this.tacheAffichage.getFenetre().dispose();
+			if (JOptionPane.showOptionDialog(tacheAffichage.getFenetre(), "Etes-vous sûr de vouloir quitter l'application ?", "Quitter - confirmation", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Oui !", "Non"}, "Oui !") == JOptionPane.OK_OPTION)
+				System.exit(0);
 	}
 }

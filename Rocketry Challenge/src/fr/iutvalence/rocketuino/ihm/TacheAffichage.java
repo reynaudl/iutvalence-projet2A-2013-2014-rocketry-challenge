@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 
 import fr.iutvalence.rocketuino.ApplicationRocketruino;
 import fr.iutvalence.rocketuino.RocketruinoEnVol;
+import fr.iutvalence.rocketuino.RocketruinoPostVol;
 
 public class TacheAffichage implements Runnable
 {
@@ -12,6 +13,7 @@ public class TacheAffichage implements Runnable
 	public int hauteurFenetre;
 	
 	private JFrame fenetre;
+	private PanneauMenuPrincipal panneauMenuPrincipal;
 	
 	public TacheAffichage(int largeurFenetre, int hauteurFenetre)
 	{
@@ -39,20 +41,21 @@ public class TacheAffichage implements Runnable
 	
 	public void lancerAffichageEnVol()
 	{
-		RocketruinoEnVol controleur = new RocketruinoEnVol();
-		AffichageEnVol vue = new AffichageEnVol(controleur, this);
-		controleur.setVue(vue);
+		RocketruinoEnVol controleurEnVol = new RocketruinoEnVol();
+		AffichageEnVol vueEnVol = new AffichageEnVol(controleurEnVol, this);
 		
-		if (vue.isReady())
-		{
-			this.changerContenuFenetre(vue);
-		}
+		controleurEnVol.setVue(vueEnVol);
+		
+		if (vueEnVol.isReady())
+			this.changerContenuFenetre(vueEnVol);
 	}
 	
 	public void lancerMenuPrincipal()
 	{
-		PanneauMenuPrincipal panneauMenuPrincipal = new PanneauMenuPrincipal(this);
-		this.changerContenuFenetre(panneauMenuPrincipal);
+		if (this.panneauMenuPrincipal == null)
+			this.panneauMenuPrincipal = new PanneauMenuPrincipal(this);
+		
+		this.changerContenuFenetre(this.panneauMenuPrincipal);
 	}
 
 	private void changerContenuFenetre(JComponent composant)
